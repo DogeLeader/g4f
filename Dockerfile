@@ -15,6 +15,8 @@ RUN apt-get update && apt-get install -y \
 # Clone the gpt4free repository
 RUN git clone https://github.com/xtekky/gpt4free.git /app
 
+RUN rm -rf /usr/lib/python3.11/EXTERNALLY-MANAGED
+
 # Install Python dependencies
 RUN pip3 install --no-cache-dir -r /app/requirements.txt
 
@@ -22,4 +24,4 @@ RUN pip3 install --no-cache-dir -r /app/requirements.txt
 EXPOSE 8080
 
 # Set the default command to run the application
-CMD ["python3", "-m", "g4f.cli", "gui", "-port", "8080", "-debug"]
+CMD ["python3", "-m", "g4f.cli", "gui", "-port", "8080"]
